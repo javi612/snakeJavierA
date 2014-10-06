@@ -4,24 +4,25 @@ var context;
 var screenwidth;
 var screenheight;
 
-gamedraw();
+gameInitialize();
+gameDraw();
 
 function gameInitialize() {
-    var canvas = document.getelementbyid("game-screen");
-    context = canvas.getcontext("2d");
+    var canvas = document.getElementById("game-screen");
+    context = canvas.getContext("2d");
     
     screenwidth = window.innerWidth;
-    screenheight =window.innerHeight;
+    screenheight = window.innerHeight;
     
     canvas.width = screenwidth;
     canvas.height = screenheight;
 }
 
-function gameloop() {
+function gameLoop() {
     
 }
 
-function gamedraw() {
-    context.fillstyle = "rgb(157, 242, 198)";
-    context.rect(0, 0, screenwidth, screenheight);
+function gameDraw() {
+    context.fillStyle = "rgb(157, 242, 198)";
+    context.fillRect(0, 0, screenwidth, screenheight);
 }
