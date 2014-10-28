@@ -15,6 +15,7 @@ var screenWidth;
 var screenHeight;
 
 var gameState;
+var gameOverMenu;
 
 /*-----------------------------------------------------------------------------
  * Executing Name Code
@@ -43,6 +44,8 @@ function gameInitialize() {
 
     document.addEventListener("keydown", keyboardHandler);
     
+    gameOverMenu = document.getElementById("gameOver");
+    
     setState("PLAY");
 }
 
@@ -67,7 +70,7 @@ function gameDraw() {
 
 function snakeInitialize() {
     snake = [];
-    snakeLength = 1;
+    snakeLength = 60;
     snakeSize = 20;
     snakeDirection = "down";
 
@@ -184,7 +187,7 @@ function checkFoodCollision(snakeHeadX, snakeHeadY, randomX, randomY) {
 
 function checkWallCollisions(snakeHeadX, snakeHeadY) {
     if (snakeHeadX * snakeSize >= screenWidth || snakeHeadX * snakeSize < 0) {
-        setState(GAMEOVER);
+        setState("GAME OVER");
     }
 }
 
@@ -195,4 +198,15 @@ function checkWallCollisions(snakeHeadX, snakeHeadY) {
 
 function setState(state) {
     gameState = state;
+    showMenu(state);
+}
+
+function displayMenu(menu) {
+    menu.style.visibility = "visible";
+}
+
+function showMenu(state) {
+    if(state == "GAME OVER"){
+        displayMenu(gameOverMenu);
+    }
 }
