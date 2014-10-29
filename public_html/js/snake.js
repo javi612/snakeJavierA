@@ -45,6 +45,7 @@ function gameInitialize() {
     document.addEventListener("keydown", keyboardHandler);
     
     gameOverMenu = document.getElementById("gameOver");
+    centerMenuPosition(gameOverMenu);
     
     setState("PLAY");
 }
@@ -70,7 +71,7 @@ function gameDraw() {
 
 function snakeInitialize() {
     snake = [];
-    snakeLength = 60;
+    snakeLength = 2;
     snakeSize = 20;
     snakeDirection = "down";
 
@@ -201,6 +202,11 @@ function setState(state) {
     showMenu(state);
 }
 
+/*-----------------------------------------------------------------------------
+ * Menu Functions
+ * ----------------------------------------------------------------------------
+ */
+
 function displayMenu(menu) {
     menu.style.visibility = "visible";
 }
@@ -209,4 +215,8 @@ function showMenu(state) {
     if(state == "GAME OVER"){
         displayMenu(gameOverMenu);
     }
+}
+
+function centerMenuPosition(menu) {
+    menu.style.top = (screenHeight / 2) + "px";
 }
