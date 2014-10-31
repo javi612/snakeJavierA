@@ -109,7 +109,7 @@ function snakeUpdate() {
     else if (snakeDirection == "left") {
         snakeHeadX--;
     }
-
+    
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
     snakeTail.y = snakeHeadY;
@@ -218,5 +218,6 @@ function showMenu(state) {
 }
 
 function centerMenuPosition(menu) {
-    menu.style.top = (screenHeight / 2) + "px";
+    menu.style.top = (screenHeight / 2) - (menu.offHeight / 2)+ "px";
+    menu.style.left = (screenWidth / 2) - (menu.offWidth / 2 ) + "px";
 }
